@@ -5,8 +5,9 @@ const { AGENCY_TABLE, AgencySchema } = require("../models/agencyModel");
 const { CLIENT_TABLE, ClientSchema } = require("../models/clientModel");
 const { SELLER_TABLE, SellerSchema } = require("../models/sellerModel");
 const { BRANCH_TABLE, BranchSchema} = require('../models/branchModel')
-const { ORDER_TABLE, OrderSchema, Order} = require('../models/orderModel')
+const { ORDER_TABLE, OrderSchema} = require('../models/orderModel')
 const { ORDER_PRODUCT_TABLE, OrderProductSchema} = require('../models/order-productModel')
+const { USER_TABLE, UserSchema} = require('../models/userModel')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -18,6 +19,7 @@ module.exports = {
     await queryInterface.createTable(BRANCH_TABLE, BranchSchema)
     await queryInterface.createTable(ORDER_TABLE, OrderSchema)
     await queryInterface.createTable(ORDER_PRODUCT_TABLE, OrderProductSchema)
+    await queryInterface.createTable(USER_TABLE, UserSchema);
   },
 
   async down(queryInterface, Sequelize) {
@@ -28,5 +30,6 @@ module.exports = {
     await queryInterface.dropTable(BRANCH_TABLE)
     await queryInterface.dropTable(ORDER_TABLE)
     await queryInterface.dropTable(ORDER_PRODUCT_TABLE)
+    await queryInterface.dropTable(USER_TABLE);
   },
 };
